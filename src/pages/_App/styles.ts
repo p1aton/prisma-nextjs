@@ -5,22 +5,17 @@ type AppStyledProps = {
 }
 
 export const AppStyled = styled.div<AppStyledProps>`
-
   min-height: calc(100vh - 100px);
 
- ${({ isHomePage }) => {
-   
-   if (isHomePage) {
-
-     return css`
+  ${({ isHomePage }) => {
+    if (isHomePage) {
+      return css`
         padding: 0;
-      `;
-    }
-    else {
-      
+      `
+    } else {
       return css`
         padding: 96px 32px 24px;
       `
     }
-  }} 
+  }}
 `

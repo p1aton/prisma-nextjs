@@ -27,7 +27,7 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
 
   const { statusCode } = pageProps
 
-  const isHomePage = useMemo(() => router.pathname === '/', [router.pathname]);
+  const isHomePage = useMemo(() => router.pathname === '/', [router.pathname])
 
   const content = useMemo(() => {
     const meta: NextSeoProps = {}
@@ -61,23 +61,16 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
       <>
         <NextSeo {...meta} />
         <MenuHeader bgActive={isHomePage} />
-        <AppStyled
-          isHomePage={isHomePage}
-        >
-          {content}
-        </AppStyled>
+        <AppStyled isHomePage={isHomePage}>{content}</AppStyled>
       </>
     )
   }, [statusCode, isHomePage, pageProps])
- 
 
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <ApolloProvider client={apolloClient}>
-          {content}
-        </ApolloProvider>
+        <ApolloProvider client={apolloClient}>{content}</ApolloProvider>
       </ThemeProvider>
     </>
   )

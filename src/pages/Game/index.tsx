@@ -27,7 +27,7 @@ const GamePage = () => {
     })
   }
 
-  const handleClickCard = useCallback((id) => {
+  const handleClickCard = useCallback((id: number) => {
     setPokemons((prevState) => {
       return Object.entries(prevState).reduce<PokemonsState>((acc, item) => {
         const pokemon = { ...item[1] }

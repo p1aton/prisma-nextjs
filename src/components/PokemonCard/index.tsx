@@ -15,7 +15,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
   handleClickCard,
 }) => {
   const handleClick = useCallback(() => {
-    handleClickCard(id)
+    handleClickCard && handleClickCard(id)
   }, [handleClickCard, id])
 
   return (
