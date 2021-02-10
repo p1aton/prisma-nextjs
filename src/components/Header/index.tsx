@@ -21,16 +21,13 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <HeaderStyled>
-      <div className={"forest"}></div>
-      <div className={"silhouette"}> </div>
-      <div className={"moon"}> </div>
-      <div className={"container"}>
+      <div className={'forest'}></div>
+      <div className={'silhouette'}> </div>
+      <div className={'moon'}> </div>
+      <div className={'container'}>
         {!!title && <h1>{title}</h1>}
         {!!descr && <p>{descr}</p>}
-        <button
-          className={"button"}
-          onClick={handleClick}
-        >
+        <button className={'button'} onClick={handleClick}>
           Start Game
         </button>
       </div>
