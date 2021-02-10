@@ -2,9 +2,9 @@ import { useState, useEffect, useCallback } from 'react'
 import { Pokemon } from 'src/components/PokemonCard/interfaces'
 import Layout from '../../components/Layout'
 import PokemonCard from '../../components/PokemonCard'
-import database from '../../service/firebase'
 import { GamePageStyled } from './styles'
 // import s from './style.module.css'
+import database from '../../service/firebase'
 
 type PokemonsState = Record<string, Pokemon>
 
@@ -14,14 +14,13 @@ const GamePage = () => {
 
   useEffect(() => {
     database.ref('pokemons').once('value', (snapshot) => {
-
-      const state: PokemonsState = snapshot.val();
+      const state: PokemonsState = snapshot.val()
       setPokemons(state)
       // console.log('####: useEffectPokemon', snapshot.val())
     })
   }, [])
 
-  const writeChangeActive = (values: {objId: string; pokemon: Pokemon}) => {
+  const writeChangeActive = (values: { objId: string; pokemon: Pokemon }) => {
     // console.log('####: ChangeActive', values)
     database.ref('pokemons/' + values.objId).set({
       ...values.pokemon,
@@ -84,10 +83,10 @@ const GamePage = () => {
         // descr="description"
         colorBg="#777"
       >
-        <button className={"button"} onClick={handleAddPokemon}>
+        <button className={'button'} onClick={handleAddPokemon}>
           Создать нового покемона
         </button>
-        <div className={"flex"}>
+        <div className={'flex'}>
           {Object.entries(pokemons).map(
             ([key, { name, img, id, type, values, isActive }]) => (
               <PokemonCard

@@ -21,11 +21,11 @@ const Layout: React.FC<LayoutProps> = ({
   }
   return (
     <LayoutStyled id={id} style={style}>
-      <div className={"wrapper"}>
+      <div className={'wrapper'}>
         <article>
-          <div className={"title"}>
+          <div className={'title'}>
             <h3>{title}</h3>
-            <span className={"separator"}></span>
+            <span className={'separator'}></span>
           </div>
           <div className={`desc full`}>{children}</div>
         </article>
