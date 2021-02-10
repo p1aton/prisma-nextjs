@@ -1,7 +1,6 @@
-import cn from 'classnames';
-import {Link} from 'react-router-dom'
-import s from './style.module.css';
-
+import cn from 'classnames'
+import { Link } from 'react-router-dom'
+import s from './style.module.css'
 
 const MENU = [
   {
@@ -24,29 +23,29 @@ const MENU = [
 
 const Menu = ({ isOpen, onChangeActive }) => {
   const onMenuClick = () => {
-    onChangeActive && onChangeActive();
+    onChangeActive && onChangeActive()
   }
   return (
-    <div className={cn(s.menuContainer, {
-      [s.active]: isOpen === true,
-      [s.deactive]: isOpen === false
-    })}>
+    <div
+      className={cn(s.menuContainer, {
+        [s.active]: isOpen === true,
+        [s.deactive]: isOpen === false,
+      })}
+    >
       <div className={s.overlay} />
       <div>
         <ul>
-          {
-            MENU.map(({ title, to }, index) => (
-              <li key={index}>
-                <Link to={to} onClick={onMenuClick}>
-                  {title}
-                </Link>
-              </li>
-            ))
-          }
+          {MENU.map(({ title, to }, index) => (
+            <li key={index}>
+              <Link to={to} onClick={onMenuClick}>
+                {title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
   )
 }
 
-export default Menu;
+export default Menu

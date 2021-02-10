@@ -5,9 +5,7 @@ import { Page } from '../_App/interfaces'
 export const MainPage: Page = () => {
   return (
     <>
-      <NextSeo 
-      title="Main page" 
-      description="Main page description" />
+      <NextSeo title="Main page" description="Main page description" />
 
       <div>Main Page</div>
     </>

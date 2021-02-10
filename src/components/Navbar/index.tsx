@@ -1,21 +1,23 @@
-import cn from 'classnames';
+import cn from 'classnames'
 
-import s from './style.module.css';
+import s from './style.module.css'
 
 const NavBar = ({ isOpen, bgActive = false, onClickHamburg }) => {
   return (
-    <nav id={s.navbar} className={cn({
-      [s.bgActive]: bgActive
-    })}>
+    <nav
+      id={s.navbar}
+      className={cn({
+        [s.bgActive]: bgActive,
+      })}
+    >
       <div className={s.navWrapper}>
-        <p className={s.brand}>
-          LOGO
-        </p>
-        <div 
+        <p className={s.brand}>LOGO</p>
+        <div
           className={cn(s.menuButton, {
-            [s.active]: isOpen
+            [s.active]: isOpen,
           })}
-          onClick={onClickHamburg}>
+          onClick={onClickHamburg}
+        >
           <span />
         </div>
       </div>
@@ -23,4 +25,4 @@ const NavBar = ({ isOpen, bgActive = false, onClickHamburg }) => {
   )
 }
 
-export default NavBar;
+export default NavBar
