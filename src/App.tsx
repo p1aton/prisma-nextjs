@@ -19,7 +19,7 @@ import s from './style.module.css'
 
 const App = () => {
   const match = useRouteMatch('/')
-  console.log('####: match', match)
+  // console.log('####: match', match)
   return (
     <Switch>
       <Route path="/404" render={() => <h1>404 Not Found</h1>} />

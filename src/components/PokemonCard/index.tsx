@@ -1,40 +1,46 @@
-import { useState } from 'react'
-import s from './style.module.css'
+// import s from './style.module.css'
 import CardBackSide from './assets/card-back-side.jpg'
-import cn from 'classnames'
+// import cn from 'classnames'
+import { useCallback } from 'react'
+import { PokemonCardProps } from './interfaces'
+import { PokemonCardStyled } from './styles'
 
-const PokemonCard = ({
+const PokemonCard: React.FC<PokemonCardProps> = ({
   type,
   values,
   id,
   img,
   name,
-  handleClickCard,
   isActive,
+  handleClickCard,
 }) => {
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     handleClickCard(id)
-  }
+  }, [handleClickCard, id])
 
   return (
-    <div className={s.root} onClick={handleClick}>
-      <div className={cn(s.pokemonCard, { [s.active]: isActive })}>
-        <div className={s.cardFront}>
-          <div className={`${s.wrap} ${s.front}`}>
-            <div className={`${s.pokemon} ${s[type]}`}>
-              <div className={s.values}>
-                <div className={cn(s.count, s.top)}>{values.top}</div>
-                <div className={cn(s.count, s.right)}>{values.right}</div>
-                <div className={cn(s.count, s.bottom)}>{values.bottom}</div>
-                <div className={cn(s.count, s.left)}>{values.left}</div>
+    <PokemonCardStyled className={'root'} onClick={handleClick}>
+      <div className={['pokemonCard', isActive ? 'active' : ''].join(' ')}>
+        <div className={'cardFront'}>
+          <div className={`${'wrap'} ${'front'}`}>
+            <div className={`${'pokemon'} ${type}`}>
+              <div className={'values'}>
+                <div className={['count', 'top'].join(' ')}>{values.top}</div>
+                <div className={['count', 'right'].join(' ')}>
+                  {values.right}
+                </div>
+                <div className={['count', 'bottom'].join(' ')}>
+                  {values.bottom}
+                </div>
+                <div className={['count', 'left'].join(' ')}>{values.left}</div>
               </div>
-              <div className={s.imgContainer}>
+              <div className={'imgContainer'}>
                 <img src={img} alt={name} />
               </div>
-              <div className={s.info}>
-                <span className={s.number}>#{id}</span>
-                <h3 className={s.name}>{name}</h3>
-                <small className={s.type}>
+              <div className={'info'}>
+                <span className={'number'}>#{id}</span>
+                <h3 className={'name'}>{name}</h3>
+                <small className={'type'}>
                   Type: <span>{type}</span>
                 </small>
               </div>
@@ -42,13 +48,13 @@ const PokemonCard = ({
           </div>
         </div>
 
-        <div className={s.cardBack}>
-          <div className={`${s.wrap} ${s.back}`}>
+        <div className={'cardBack'}>
+          <div className={`${'wrap'} ${'back'}`}>
             <img src={CardBackSide} alt="Сard Backed" />
           </div>
         </div>
       </div>
-    </div>
+    </PokemonCardStyled>
   )
 }
 
