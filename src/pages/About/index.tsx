@@ -2,11 +2,12 @@
 import Layout from '../../components/Layout'
 import Background from '../../assets/bg2.jpg'
 
-import s from './style.module.css'
+// import s from './style.module.css'
 import { useRouter } from 'next/dist/client/router'
 import { useCallback } from 'react'
+import { Page } from '../_App/interfaces'
 
-const AboutPage = () => {
+const AboutPage: Page = () => {
   // const history = useHistory()
 
   const router = useRouter()
@@ -40,7 +41,10 @@ const AboutPage = () => {
           the opponent&apos;s card will be captured and changed into the
           player&apos;s color instead.{' '}
         </p>
-        <button className={s.routeButton} onClick={handleClick}>
+        <button
+          // className={s.routeButton}
+          onClick={handleClick}
+        >
           Back to Home
         </button>
       </Layout>
