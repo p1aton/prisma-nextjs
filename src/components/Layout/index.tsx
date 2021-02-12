@@ -5,7 +5,13 @@ import s from './style.module.css'
  * Компонент шаблонизации
  */
 
-const Layout: React.FC<LayoutProps> = ({ id, title, urlBg, colorBg, children }) => {
+const Layout: React.FC<LayoutProps> = ({
+  id,
+  title,
+  urlBg,
+  colorBg,
+  children,
+}) => {
   const style = {
     backgroundColor: colorBg ? `${colorBg}` : 'none',
     backgroundImage: urlBg ? `url('${urlBg}')` : 'none',
@@ -27,7 +33,5 @@ const Layout: React.FC<LayoutProps> = ({ id, title, urlBg, colorBg, children }) 
     </section>
   )
 }
-
-
 
 export default Layout

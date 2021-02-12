@@ -8,14 +8,14 @@ import { useCallback } from 'react'
 
 const ContactPage = () => {
   // const history = useHistory()
-  const router = useRouter(); 
+  const router = useRouter()
 
   /**
    * При клике переводим на главную страницу
    */
   const handleClick = useCallback(() => {
     router.push('/')
-  }, []);
+  }, [])
 
   return (
     <>

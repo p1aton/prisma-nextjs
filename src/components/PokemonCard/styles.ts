@@ -1,15 +1,18 @@
-.root {
+import styled from 'styled-components'
+
+export const PokemonCardStyled = styled.div`
+  /* .root { */
     width: 268px;
     height: 388px;
     margin: 16px;
     perspective: 1000px;
-}
+  /* } */
 
-.pokemonCard {
-    --fire: #FDDFDF;
-    --grass: #DEFDE0;
-    --electric: #FCF7DE;
-    --water: #DEF3FD;
+  .pokemonCard {
+    --fire: #fddfdf;
+    --grass: #defde0;
+    --electric: #fcf7de;
+    --water: #def3fd;
     --ground: #f4e7da;
     --rock: #d5d5d4;
     --fairy: #fceaff;
@@ -17,25 +20,25 @@
     --bug: #f8d5a3;
     --dragon: #97b3e6;
     --psychic: #eaeda1;
-    --flying: #F5F5F5;
-    --fighting: #E6E0D4;
-    --normal:#F5F5F5;
+    --flying: #f5f5f5;
+    --fighting: #e6e0d4;
+    --normal: #f5f5f5;
 
     width: inherit;
     height: inherit;
     position: relative;
     transform-style: preserve-3d;
-    transition: .6s .1s;
+    transition: 0.6s 0.1s;
     transform: rotateY(180deg);
-}
+  }
 
-/* TODO: This place where we should change :hover on .active */
-.pokemonCard.active {
+  /* TODO: This place where we should change :hover on .active */
+  .pokemonCard.active {
     transform: rotateY(0deg);
-}
+  }
 
-.cardFront,
-.cardBack {
+  .cardFront,
+  .cardBack {
     width: 100%;
     height: 100%;
     border-radius: 24px;
@@ -48,27 +51,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
 
-.cardFront {
+  .cardFront {
     transform: rotateY(0deg);
     z-index: 2;
-}
+  }
 
-.wrap {
+  .wrap {
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-}
+  }
 
-.wrap.front {
+  .wrap.front {
     z-index: 2;
     padding: 10px;
-}
+  }
 
-.wrap.front::after {
+  .wrap.front::after {
     content: '';
     display: block;
     width: 100%;
@@ -79,23 +82,23 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 24px;
-}
+  }
 
-.wrap.back {
+  .wrap.back {
     z-index: -1;
-}
+  }
 
-.cardBack {
+  .cardBack {
     transform: rotateY(180deg);
     z-index: 1;
-}
+  }
 
-.cardBack img {
+  .cardBack img {
     height: 100%;
     border-radius: 24px;
-}
+  }
 
-.pokemon {
+  .pokemon {
     width: 100%;
     height: 100%;
     background-color: #eee;
@@ -106,82 +109,82 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+  }
 
-.fire {
+  .fire {
     background-color: var(--fire);
-}
-.grass {
+  }
+  .grass {
     background-color: var(--grass);
-}
-.electric {
+  }
+  .electric {
     background-color: var(--electric);
-}
-.water {
+  }
+  .water {
     background-color: var(--water);
-}
-.ground {
+  }
+  .ground {
     background-color: var(--ground);
-}
-.rock {
+  }
+  .rock {
     background-color: var(--rock);
-}
-.fairy {
+  }
+  .fairy {
     background-color: var(--fairy);
-}
-.poison {
+  }
+  .poison {
     background-color: var(--poison);
-}
-.bug {
+  }
+  .bug {
     background-color: var(--bug);
-}
-.dragon {
+  }
+  .dragon {
     background-color: var(--dragon);
-}
-.psychic {
+  }
+  .psychic {
     background-color: var(--psychic);
-}
-.flying {
+  }
+  .flying {
     background-color: var(--flying);
-}
-.fighting {
+  }
+  .fighting {
     background-color: var(--fighting);
-}
-.normal {
+  }
+  .normal {
     background-color: var(--normal);
-}
+  }
 
-.pokemon .imgContainer {
+  .pokemon .imgContainer {
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     width: 140px;
     height: 140px;
     text-align: center;
     margin-bottom: 20px;
-}
+  }
 
-.pokemon .imgContainer img {
+  .pokemon .imgContainer img {
     margin-top: 20px;
     max-width: 90%;
-}
+  }
 
-.pokemon .info {
+  .pokemon .info {
     margin-top: 20px;
-}
+  }
 
-.pokemon .number {
+  .pokemon .number {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     font-size: 0.8em;
     padding: 5px 10px;
-}
+  }
 
-.pokemon .name {
+  .pokemon .name {
     margin: 15px 0 7px;
     letter-spacing: 1px;
-}
+  }
 
-.values {
+  .values {
     position: absolute;
     display: block;
     top: 20px;
@@ -190,33 +193,34 @@
     line-height: 26px;
     width: 78px;
     height: 78px;
-}
+  }
 
-.count{
+  .count {
     position: absolute;
     width: 30px;
     height: 26px;
     text-align: center;
-}
+  }
 
-.count.top {
+  .count.top {
     left: 50%;
     transform: translate(-50%, 0);
     top: 0;
-}
+  }
 
-.count.left {
+  .count.left {
     top: 26px;
     left: 0;
-}
+  }
 
-.count.right {
+  .count.right {
     top: 26px;
     right: 0;
-}
+  }
 
-.count.bottom {
+  .count.bottom {
     left: 50%;
     transform: translate(-50%, 0);
     bottom: 0;
-}
+  }
+`
