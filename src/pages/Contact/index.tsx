@@ -1,14 +1,22 @@
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import Layout from '../../components/Layout'
 import Background from '../../assets/bg2.jpg'
 
 import s from './style.module.css'
+import { useRouter } from 'next/dist/client/router'
+import { useCallback } from 'react'
 
 const ContactPage = () => {
-  const history = useHistory()
-  const handleClick = () => {
-    history.push('/')
-  }
+  // const history = useHistory()
+  const router = useRouter(); 
+
+  /**
+   * При клике переводим на главную страницу
+   */
+  const handleClick = useCallback(() => {
+    router.push('/')
+  }, []);
+
   return (
     <>
       <Layout title="Contact me" urlBg={Background}>

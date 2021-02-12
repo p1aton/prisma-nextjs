@@ -1,6 +1,11 @@
+import { LayoutProps } from './interfaces'
 import s from './style.module.css'
 
-const Layout = ({ id, title, descr, urlBg, colorBg, children }) => {
+/**
+ * Компонент шаблонизации
+ */
+
+const Layout: React.FC<LayoutProps> = ({ id, title, urlBg, colorBg, children }) => {
   const style = {
     backgroundColor: colorBg ? `${colorBg}` : 'none',
     backgroundImage: urlBg ? `url('${urlBg}')` : 'none',
@@ -22,5 +27,7 @@ const Layout = ({ id, title, descr, urlBg, colorBg, children }) => {
     </section>
   )
 }
+
+
 
 export default Layout
