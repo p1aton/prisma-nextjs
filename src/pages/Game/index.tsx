@@ -1,21 +1,27 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Pokemon } from 'src/components/PokemonCard/interfaces'
 import Layout from '../../components/Layout'
 import PokemonCard from '../../components/PokemonCard'
 import database from '../../service/firebase'
-import s from './style.module.css'
+import { GamePageStyled } from './styles'
+// import s from './style.module.css'
+
+type PokemonState = Record<string, Pokemon>
 
 const GamePage = () => {
-  const [pokemons, setPokemons] = useState({})
+  const [pokemons, setPokemons] = useState<PokemonState>({})
   // console.log('####: useStatePokemons', pokemons)
 
   useEffect(() => {
     database.ref('pokemons').once('value', (snapshot) => {
-      setPokemons(snapshot.val())
+
+      const state: PokemonState = snapshot.val()
+      setPokemons(state)
       // console.log('####: useEffectPokemon', snapshot.val())
     })
   }, [])
 
-  const writeChangeActive = (values) => {
+  const writeChangeActive = (values: {objId: string; pokemon: Pokemon}) => {
     // console.log('####: ChangeActive', values)
     database.ref('pokemons/' + values.objId).set({
       ...values.pokemon,
@@ -24,7 +30,7 @@ const GamePage = () => {
 
   const handleClickCard = useCallback((id) => {
     setPokemons((prevState) => {
-      return Object.entries(prevState).reduce((acc, item) => {
+      return Object.entries(prevState).reduce<PokemonState>((acc, item) => {
         const pokemon = { ...item[1] }
         if (pokemon.id === id) {
           pokemon.isActive = !pokemon.isActive
@@ -71,17 +77,17 @@ const GamePage = () => {
   }, [])
 
   return (
-    <>
+    <GamePageStyled>
       <Layout
         id={'2'}
         title="Layout 2 title"
         // descr="description"
         colorBg="#777"
       >
-        <button className={s.button} onClick={handleAddPokemon}>
+        <button className={"button"} onClick={handleAddPokemon}>
           Создать нового покемона
         </button>
-        <div className={s.flex}>
+        <div className={"flex"}>
           {Object.entries(pokemons).map(
             ([key, { name, img, id, type, values, isActive }]) => (
               <PokemonCard
@@ -98,7 +104,7 @@ const GamePage = () => {
           )}
         </div>
       </Layout>
-    </>
+    </GamePageStyled>
   )
 }
 

@@ -35,6 +35,7 @@ const AboutPage = () => {
           the opponent&apos;s card will be captured and changed into the
           player&apos;s color instead.{' '}
         </p>
+        {/* TODO: Подключить styled компонент */}
         <button className={s.routeButton} onClick={handleClick}>
           Back to Home
         </button>

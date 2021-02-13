@@ -11,7 +11,11 @@ const firebaseConfig = {
   appId: '1:403311329751:web:07e1ccb43501979bc64b92',
 }
 
-firebase.initializeApp(firebaseConfig)
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig)
+} else {
+  firebase.app() // if already initialized, use that one
+}
 
 export const fire = firebase
 export const database = firebase.database()

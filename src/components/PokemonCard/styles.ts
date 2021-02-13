@@ -1,13 +1,12 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const PokemonCardStyled = styled.div`
-  /* .root { */
-    width: 268px;
-    height: 388px;
-    margin: 16px;
-    perspective: 1000px;
+  /* &.root { */
+  width: 268px;
+  height: 388px;
+  margin: 16px;
+  perspective: 1000px;
   /* } */
-
   .pokemonCard {
     --fire: #fddfdf;
     --grass: #defde0;
@@ -23,7 +22,6 @@ export const PokemonCardStyled = styled.div`
     --flying: #f5f5f5;
     --fighting: #e6e0d4;
     --normal: #f5f5f5;
-
     width: inherit;
     height: inherit;
     position: relative;
@@ -31,12 +29,10 @@ export const PokemonCardStyled = styled.div`
     transition: 0.6s 0.1s;
     transform: rotateY(180deg);
   }
-
   /* TODO: This place where we should change :hover on .active */
   .pokemonCard.active {
     transform: rotateY(0deg);
   }
-
   .cardFront,
   .cardBack {
     width: 100%;
@@ -52,12 +48,10 @@ export const PokemonCardStyled = styled.div`
     justify-content: center;
     align-items: center;
   }
-
   .cardFront {
     transform: rotateY(0deg);
     z-index: 2;
   }
-
   .wrap {
     position: absolute;
     top: 0;
@@ -65,12 +59,10 @@ export const PokemonCardStyled = styled.div`
     bottom: 0;
     right: 0;
   }
-
   .wrap.front {
     z-index: 2;
     padding: 10px;
   }
-
   .wrap.front::after {
     content: '';
     display: block;
@@ -83,21 +75,17 @@ export const PokemonCardStyled = styled.div`
     transform: translate(-50%, -50%);
     border-radius: 24px;
   }
-
   .wrap.back {
     z-index: -1;
   }
-
   .cardBack {
     transform: rotateY(180deg);
     z-index: 1;
   }
-
   .cardBack img {
     height: 100%;
     border-radius: 24px;
   }
-
   .pokemon {
     width: 100%;
     height: 100%;
@@ -110,7 +98,6 @@ export const PokemonCardStyled = styled.div`
     align-items: center;
     justify-content: center;
   }
-
   .fire {
     background-color: var(--fire);
   }
@@ -153,7 +140,6 @@ export const PokemonCardStyled = styled.div`
   .normal {
     background-color: var(--normal);
   }
-
   .pokemon .imgContainer {
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
@@ -162,28 +148,23 @@ export const PokemonCardStyled = styled.div`
     text-align: center;
     margin-bottom: 20px;
   }
-
   .pokemon .imgContainer img {
     margin-top: 20px;
     max-width: 90%;
   }
-
   .pokemon .info {
     margin-top: 20px;
   }
-
   .pokemon .number {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     font-size: 0.8em;
     padding: 5px 10px;
   }
-
   .pokemon .name {
     margin: 15px 0 7px;
     letter-spacing: 1px;
   }
-
   .values {
     position: absolute;
     display: block;
@@ -194,30 +175,25 @@ export const PokemonCardStyled = styled.div`
     width: 78px;
     height: 78px;
   }
-
   .count {
     position: absolute;
     width: 30px;
     height: 26px;
     text-align: center;
   }
-
   .count.top {
     left: 50%;
     transform: translate(-50%, 0);
     top: 0;
   }
-
   .count.left {
     top: 26px;
     left: 0;
   }
-
   .count.right {
     top: 26px;
     right: 0;
   }
-
   .count.bottom {
     left: 50%;
     transform: translate(-50%, 0);

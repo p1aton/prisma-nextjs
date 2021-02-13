@@ -1,6 +1,6 @@
 import Header from '../../components/Header'
 import Layout from '../../components/Layout'
-import Footer from '../../components/Footer'
+// import Footer from '../../components/Footer'
 import bgImg1 from './../../assets/bg1.jpg'
 import bgImg2 from './../../assets/bg2.jpg'
 import PokemonCard from '../../components/PokemonCard'

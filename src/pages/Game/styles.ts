@@ -1,3 +1,10 @@
+import styled from 'styled-components';
+import { LayoutStyled } from './../../components/Layout/styles';
+
+export const GamePageStyled = styled.div`
+
+${LayoutStyled} {
+
 .flex {
     display: flex;
     justify-content: center;
@@ -20,3 +27,6 @@
     margin-bottom: 20px;
     
   }
+}
+
+  `
