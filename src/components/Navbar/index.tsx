@@ -19,13 +19,13 @@ const NavBar: React.FC<NavBarProps> = ({
       // className={bgActive ? "bgActive" : undefined}
       bgActive={bgActive}
     >
-      <div className={"navWrapper"}>
-        <p className={"brand"}>LOGO</p>
+      <div className={'navWrapper'}>
+        <p className={'brand'}>LOGO</p>
         <div
           // className={cn(s.menuButton, {
           //   [s.active]: isOpen,
           // })}
-          className={["menuButton", isOpen ? "active" : ""].join(" ")}
+          className={['menuButton', isOpen ? 'active' : ''].join(' ')}
           onClick={onClickHamburg}
         >
           <span />

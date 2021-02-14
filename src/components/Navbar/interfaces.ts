@@ -1,7 +1,7 @@
-import { NavBarStyledProps } from './styles';
+import { NavBarStyledProps } from './styles'
 
 export type NavBarProps = {
   isOpen: boolean
   bgActive: boolean
   onClickHamburg: () => void
-} & Omit<Partial<NavBarStyledProps>, "bgActive">
+} & Omit<Partial<NavBarStyledProps>, 'bgActive'>

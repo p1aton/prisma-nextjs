@@ -16,6 +16,7 @@ import ErrorPage from '../_Error'
 import { GlobalStyle } from 'src/theme/GlobalStyle'
 import MenuHeader from 'src/components/MenuHeader'
 import { useRouter } from 'next/dist/client/router'
+import { AppStyled } from './styles'
 
 const withWs = true
 
@@ -25,6 +26,10 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter()
 
   const { statusCode } = pageProps
+
+  const isHomePage = useMemo(() => {
+    router.pathname === '/'
+  }, [router.pathname])
 
   const content = useMemo(() => {
     const meta: NextSeoProps = {}
@@ -57,22 +62,20 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
     return (
       <>
         <NextSeo {...meta} />
-        {content}
+        return <MenuHeader bgActive={isHomePage} />
+        {menu}
+        <AppStyled isHomePage={isHomePage}>{content}</AppStyled>
       </>
     )
-  }, [statusCode, pageProps])
+  }, [statusCode, isHomePage, pageProps])
 
-  const menu = useMemo(() => {
-
-    return <MenuHeader bgActive={router.pathname === '/'} />
-  }, [router])
+  const menu = useMemo(() => {}, [])
 
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <ApolloProvider client={apolloClient}>
-          {menu}
           {content}
         </ApolloProvider>
       </ThemeProvider>

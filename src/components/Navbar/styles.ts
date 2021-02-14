@@ -1,33 +1,32 @@
-import styled, {css}from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export type NavBarStyledProps = {
-  bgActive: boolean;
+  bgActive: boolean
 }
 
 export const NavBarStyled = styled.nav<NavBarStyledProps>`
-   {
-    position: fixed;
-    z-index: 9999;
-    width: 100%;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    background-color: #202736;
-  }
-
-  ${({bgActive}) => {
-    if(bgActive) {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  /* &.bgActive {
+    background: #181d23;
+  } */
+  ${({ bgActive }) => {
+    if (bgActive) {
       return css`
-      background: #181d23;
+        background: #181d23;
+      `
+    } else {
+      return css`
+        background-color: #202736;
       `
     }
   }}
 
-  &.bgActive {
-    background: #181d23;
-  }
-
-   .navWrapper {
+  .navWrapper {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -36,7 +35,7 @@ export const NavBarStyled = styled.nav<NavBarStyledProps>`
     padding: 0 2rem;
   }
 
-   .brand {
+  .brand {
     font-size: 1.6rem;
     color: #fafafa;
     cursor: default;
