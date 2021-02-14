@@ -1,14 +1,15 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
-import Menu from '../../components/Menu/index.js'
-import NavBar from '../../components/Navbar/index.js'
+import Menu from '../../components/Menu'
+import NavBar from '../../components/Navbar'
+import { MenuHeaderProps } from './interfaces.js'
 
-const MenuHeader = ({ bgActive }) => {
-  const [isOpen, setOpen] = useState(null)
+const MenuHeader: React.FC<MenuHeaderProps> = ({ bgActive }) => {
+  const [isOpen, setOpen] = useState(false)
 
-  const handleClickHamburg = () => {
+  const handleClickHamburg = useCallback(() => {
     setOpen((prevState) => !prevState)
-  }
+  }, [])
 
   return (
     <>

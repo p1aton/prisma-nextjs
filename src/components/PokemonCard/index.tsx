@@ -27,8 +27,12 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
             <div className={`${'pokemon'} ${[type]}`}>
               <div className={'values'}>
                 <div className={['count', 'top'].join(' ')}>{values.top}</div>
-                <div className={['count', 'right'].join(' ')}>{values.right}</div>
-                <div className={['count', 'bottom'].join(' ')}>{values.bottom}</div>             
+                <div className={['count', 'right'].join(' ')}>
+                  {values.right}
+                </div>
+                <div className={['count', 'bottom'].join(' ')}>
+                  {values.bottom}
+                </div>
                 <div className={['count', 'left'].join(' ')}>{values.left}</div>
               </div>
               <div className={'imgContainer'}>

@@ -1,41 +1,6 @@
-.menuContainer > .overlay,
-.menuContainer.active > .overlay {
-  position: absolute;
-  right: 0;
-  height: calc( 100vh - 120px );
-  width: calc( 100vw - 120px );
-  background: #202736;
-}
+import styled from 'styled-components'
 
-.menuContainer.active > .overlay {
-  animation: overlay-slide-in 300ms forwards 300ms;
-}
-
-@keyframes overlay-slide-in {
-  from {
-    width: calc( 100vw - 120px );
-  }
-  to {
-    width: 0;
-  }
-}
-
-.menuContainer > .overlay {
-  animation: overlay-slide-out 300ms forwards;
-}
-
-@keyframes overlay-slide-out {
-  from {
-    left: 0;
-    width: 0;
-  }
-  to {
-    left: 0;
-    width: calc( 100vw - 120px );
-  }
-}
-
-.menuContainer {
+export const MenuStyled = styled.div`
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -48,158 +13,33 @@
   overflow: hidden;
   opacity: 0;
   z-index: -1;
-}
 
-.menuContainer::before,
-.menuContainer::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  min-height: 100vh;
-  z-index: -1;
-}
-
-.menuContainer::before {
-  background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true);
-}
-
-.menuContainer::after {
-  background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Trees.svg?sanitize=true) bottom repeat-x;
-}
-
-.menuContainer.deactive {
-  animation: fade-out 600ms forwards;
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-    z-index: 999;
-  }
-  50% {
-    opacity: 1;
-    z-index: 999;
-  }
-  100% {
-    opacity: 0;
-    z-index: -1;
-  }
-}
-
-.menuContainer.active {
-  animation: fade-in 300ms forwards;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    z-index: -1;
-  }
-  to {
-    opacity: 1;
-    z-index: 999;
-  }
-}
-
-/***** Menu Items: Animation *****/
-.menuContainer ul {
-  margin-left: -80px;
-  opacity: 0;
-  animation: slide-out 200ms forwards;
-}
-
-.menuContainer ul {
-  list-style-type: none !important;
-  font-size: 3rem;
-}
-
-@keyframes slide-out {
-  from {
-    opacity: 1;
-    margin-left: 0px;
-  }
-  to {
-    opacity: 0;
-    margin-left: -80px;
-  }
-}
-
-.menuContainer.active ul {
-  animation: slide-in 300ms forwards 600ms;
-}
-
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    margin-left: -80px;
-  }
-  to {
-    opacity: 1;
-    margin-left: 0;
-  }
-}
-
-/***** Menu Items: Hover Animation *****/
-.menuContainer ul li {
-  border-left: .2rem solid transparent;
-  transition: border-left 200ms;
-}
-
-.menuContainer ul li a {
-  font-size: 3rem; 
-  padding-left: .5rem;
-}
-
-.menuContainer ul li a::after {
-  content: ' »';
-  font-size: 2.5rem;
-  color: transparent;
-  transition: color 200ms;
-}
-
-.menuContainer ul li a:hover::after {
-  content: ' »';
-  color: #f300b4;
-}
-
-.menuContainer a,
-.menuContainer a:visited {
-  color: #fafafa;
-}
-
-.menuContainer a:hover,
-.menuContainer a:active {
-  color: #f300b4;
-}
-
-@media only screen and (max-width: 649px) {
-  .menuContainer {
-    border: none;
+  > .overlay,
+  &.active > .overlay {
+    position: absolute;
+    right: 0;
+    height: calc(100vh - 120px);
+    width: calc(100vw - 120px);
+    background: #202736;
   }
 
-  .menuContainer > .overlay,
-  .menuContainer.active > .overlay {
-    height: 100vh;
-    width: 100vw;
-  }
-  
-  .menuContainer.active > .overlay {
+  &.active > .overlay {
     animation: overlay-slide-in 300ms forwards 300ms;
   }
-  
+
   @keyframes overlay-slide-in {
     from {
-      width: 100vw;
+      width: calc(100vw - 120px);
     }
     to {
       width: 0;
     }
   }
-  
-  .menu-container > .overlay {
+
+  > .overlay {
     animation: overlay-slide-out 300ms forwards;
   }
-  
+
   @keyframes overlay-slide-out {
     from {
       left: 0;
@@ -207,7 +47,170 @@
     }
     to {
       left: 0;
-      width: 100vw;
+      width: calc(100vw - 120px);
     }
   }
-}
+
+  ::before,
+  ::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    z-index: -1;
+  }
+
+  ::before {
+    background: url('https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true');
+  }
+
+  ::after {
+    background: url('https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Trees.svg?sanitize=true')
+      bottom repeat-x;
+  }
+
+  &.deactive {
+    animation: fade-out 600ms forwards;
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      z-index: 999;
+    }
+    50% {
+      opacity: 1;
+      z-index: 999;
+    }
+    100% {
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+
+  &.active {
+    animation: fade-in 300ms forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      z-index: -1;
+    }
+    to {
+      opacity: 1;
+      z-index: 999;
+    }
+  }
+
+  /***** Menu Items: Animation *****/
+  ul {
+    margin-left: -80px;
+    opacity: 0;
+    animation: slide-out 200ms forwards;
+  }
+
+  ul {
+    list-style-type: none !important;
+    font-size: 3rem;
+  }
+
+  @keyframes slide-out {
+    from {
+      opacity: 1;
+      margin-left: 0px;
+    }
+    to {
+      opacity: 0;
+      margin-left: -80px;
+    }
+  }
+
+  &.active ul {
+    animation: slide-in 300ms forwards 600ms;
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      margin-left: -80px;
+    }
+    to {
+      opacity: 1;
+      margin-left: 0;
+    }
+  }
+
+  /***** Menu Items: Hover Animation *****/
+  ul li {
+    border-left: 0.2rem solid transparent;
+    transition: border-left 200ms;
+  }
+
+  ul li a {
+    font-size: 3rem;
+    padding-left: 0.5rem;
+  }
+
+  ul li a::after {
+    content: ' »';
+    font-size: 2.5rem;
+    color: transparent;
+    transition: color 200ms;
+  }
+
+  ul li a:hover::after {
+    content: ' »';
+    color: #f300b4;
+  }
+
+  a,
+  a:visited {
+    color: #fafafa;
+  }
+
+  a:hover,
+  a:active {
+    color: #f300b4;
+  }
+
+  @media only screen and (max-width: 649px) {
+     {
+      border: none;
+    }
+
+    > .overlay,
+    &.active > .overlay {
+      height: 100vh;
+      width: 100vw;
+    }
+
+    &.active > .overlay {
+      animation: overlay-slide-in 300ms forwards 300ms;
+    }
+
+    @keyframes overlay-slide-in {
+      from {
+        width: 100vw;
+      }
+      to {
+        width: 0;
+      }
+    }
+
+    .menu-container > .overlay {
+      animation: overlay-slide-out 300ms forwards;
+    }
+
+    @keyframes overlay-slide-out {
+      from {
+        left: 0;
+        width: 0;
+      }
+      to {
+        left: 0;
+        width: 100vw;
+      }
+    }
+  }
+`

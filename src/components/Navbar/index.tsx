@@ -1,27 +1,37 @@
-import cn from 'classnames'
+// import cn from 'classnames'
 
-import s from './style.module.css'
+import { NavBarProps } from './interfaces'
+import { NavBarStyled } from './styles'
 
-const NavBar = ({ isOpen, bgActive = false, onClickHamburg }) => {
+// import s from './style.module.css'
+
+const NavBar: React.FC<NavBarProps> = ({
+  isOpen,
+  bgActive = false,
+  onClickHamburg,
+}) => {
   return (
-    <nav
-      id={s.navbar}
-      className={cn({
-        [s.bgActive]: bgActive,
-      })}
+    <NavBarStyled
+      // id={s.navbar}
+      // className={cn({
+      //   [s.bgActive]: bgActive,
+      // })}
+      // className={bgActive ? "bgActive" : undefined}
+      bgActive={bgActive}
     >
-      <div className={s.navWrapper}>
-        <p className={s.brand}>LOGO</p>
+      <div className={"navWrapper"}>
+        <p className={"brand"}>LOGO</p>
         <div
-          className={cn(s.menuButton, {
-            [s.active]: isOpen,
-          })}
+          // className={cn(s.menuButton, {
+          //   [s.active]: isOpen,
+          // })}
+          className={["menuButton", isOpen ? "active" : ""].join(" ")}
           onClick={onClickHamburg}
         >
           <span />
         </div>
       </div>
-    </nav>
+    </NavBarStyled>
   )
 }
 
