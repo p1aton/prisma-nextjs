@@ -1,17 +1,30 @@
 export type Pokemon = {
-  type: string
+  type: 'flying' | 'poison' | 'electric' | 'grass' | 'fire'
   values: {
-    top: number
-    right: number
-    bottom: number
-    left: number
+    top: number | string
+    right: number | string
+    bottom: number | string
+    left: number | string
   }
-  id: string
+  id: number
   img: string
   name: string
-  isActive: boolean
+  abilities: string[]
+
+  stats: {
+    hp: number
+    attack: number
+    defense: number
+    'special-attack': number
+    'special-defense': number
+    speed: number
+  }
+
+  base_experience: number
+  height: number
+  isActive?: boolean
 }
 
 export type PokemonCardProps = {
-  handleClickCard: (id: string) => void
-} & Pokemon
+  handleClickCard?: (id: number) => void
+} & Omit<Pokemon, 'abilities' | 'stats' | 'base_experience' | 'height'>

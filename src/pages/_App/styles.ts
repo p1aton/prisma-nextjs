@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 type AppStyledProps = {
   isHomePage: boolean
+  // bgActive: boolean;
 }
 
 export const AppStyled = styled.div<AppStyledProps>`
