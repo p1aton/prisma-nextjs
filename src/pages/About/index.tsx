@@ -1,14 +1,15 @@
 // import { useHistory } from 'react-router-dom'
 import Layout from '../../components/Layout'
 import Background from '../../assets/bg2.jpg'
-
-import s from './style.module.css'
+// import s from './style.module.css'
 import { useRouter } from 'next/dist/client/router'
 import { useCallback } from 'react'
+import { Page } from '../_App/interfaces'
 
-const AboutPage = () => {
+const AboutPage: Page = () => {
   // const history = useHistory()
   const router = useRouter()
+
   const handleClick = useCallback(() => {
     router.push('/')
   }, [router])
@@ -36,7 +37,10 @@ const AboutPage = () => {
           player&apos;s color instead.{' '}
         </p>
         {/* TODO: Подключить styled компонент */}
-        <button className={s.routeButton} onClick={handleClick}>
+        <button
+          // className={s.routeButton}
+          onClick={handleClick}
+        >
           Back to Home
         </button>
       </Layout>

@@ -17,6 +17,7 @@ import { GlobalStyle } from 'src/theme/GlobalStyle'
 import MenuHeader from 'src/components/MenuHeader'
 import { useRouter } from 'next/dist/client/router'
 import { AppStyled } from './styles'
+import Footer from 'src/components/Footer'
 
 const withWs = true
 
@@ -62,6 +63,7 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
         <NextSeo {...meta} />
         <MenuHeader bgActive={isHomePage} />
         <AppStyled isHomePage={isHomePage}>{content}</AppStyled>
+        <Footer />
       </>
     )
   }, [statusCode, isHomePage, pageProps])

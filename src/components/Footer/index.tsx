@@ -1,13 +1,15 @@
-import s from './style.module.css'
+// import s from './style.module.css'
+
+import { FooterStyled } from './styles'
 
 const Footer = () => {
   return (
-    <footer>
-      <div className={s.wrapper}>
+    <FooterStyled>
+      <div className={'wrapper'}>
         <h3>THANKS FOR VISITING</h3>
         <p>© 2021 #ReactMarathon.</p>
       </div>
-    </footer>
+    </FooterStyled>
   )
 }
 

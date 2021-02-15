@@ -1,16 +1,14 @@
 import styled from 'styled-components'
 
 export const HeaderStyled = styled.header`
-  
-    background: #202736;
-    background: linear-gradient(to bottom, #181d23 0%, #202736 80%);
-    background-attachment: fixed;
-    background-size: cover;
-    position: relative;
-    min-height: 100vh;
-    margin: 0 auto;
-    z-index: 1;
-  
+  background: #202736;
+  background: linear-gradient(to bottom, #181d23 0%, #202736 80%);
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  margin: 0 auto;
+  z-index: 1;
 
   &:before {
     content: '';

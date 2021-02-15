@@ -1,4 +1,4 @@
 export type HeaderProps = {
-  title?: string 
-  descr?: string 
+  title?: string
+  descr?: string
 }
