@@ -3,12 +3,13 @@ import { Pokemon } from 'src/components/PokemonCard/interfaces'
 import Layout from '../../components/Layout'
 import PokemonCard from '../../components/PokemonCard'
 import database from '../../service/firebase'
+import { Page } from '../_App/interfaces'
 import { GamePageStyled } from './styles'
 // import s from './style.module.css'
 
 type PokemonState = Record<string, Pokemon>
 
-const GamePage = () => {
+const GamePage: Page = () => {
   const [pokemons, setPokemons] = useState<PokemonState>({})
   // console.log('####: useStatePokemons', pokemons)
 
