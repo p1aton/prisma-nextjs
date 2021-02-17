@@ -14,13 +14,21 @@ import { NextSeo, NextSeoProps } from 'next-seo'
 import Page404 from '../_Error/404'
 import ErrorPage from '../_Error'
 import { GlobalStyle } from 'src/theme/GlobalStyle'
+import MenuHeader from 'src/components/MenuHeader'
+import { useRouter } from 'next/dist/client/router'
+import { AppStyled } from './styles'
+import Footer from 'src/components/Footer'
 
 const withWs = true
 
 const App: MainApp<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState, true)
 
+  const router = useRouter()
+
   const { statusCode } = pageProps
+
+  const isHomePage = useMemo(() => router.pathname === '/', [router.pathname])
 
   const content = useMemo(() => {
     const meta: NextSeoProps = {}
@@ -53,10 +61,12 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
     return (
       <>
         <NextSeo {...meta} />
-        {content}
+        <MenuHeader bgActive={isHomePage} />
+        <AppStyled isHomePage={isHomePage}>{content}</AppStyled>
+        <Footer />
       </>
     )
-  }, [statusCode, pageProps])
+  }, [statusCode, isHomePage, pageProps])
 
   return (
     <>
