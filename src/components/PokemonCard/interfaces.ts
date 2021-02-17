@@ -1,5 +1,5 @@
 export type Pokemon = {
-  type: 'flying' | 'poison' | 'electric' | 'grass' | 'fire'
+  type: string
   values: {
     top: number | string
     right: number | string
