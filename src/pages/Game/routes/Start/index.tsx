@@ -5,12 +5,13 @@ import PokemonCard from '../../../../components/PokemonCard/index.js';
 import { FireBaseContext } from 'src/components/context/firebaseContext.js';
 import { PokemonContext } from 'src/components/context/pokemonContext.js';
 import { StartPageStyled } from './styles'
+import { StartProps } from './interfaces.js';
 // import s from './style.module.css';
 
 
 
 
-const StartPage = () => {
+const StartPage: React.FC<StartProps> = () => {
     const firebase = useContext(FireBaseContext); 
     const pokemonsContext = useContext(PokemonContext)
     const history = useHistory();
