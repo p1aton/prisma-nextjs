@@ -1,86 +1,89 @@
-import { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import Layout from '../../../../components/Layout/index.js';
-import PokemonCard from '../../../../components/PokemonCard/index.js';
-import { FireBaseContext } from 'src/components/context/firebaseContext.js';
-import { PokemonContext } from 'src/components/context/pokemonContext.js';
+import { useCallback, useMemo } from 'react'
+import Layout from '../../../../components/Layout/index'
+import PokemonCard from '../../../../components/PokemonCard/index'
 import { StartPageStyled } from './styles'
-import { StartProps } from './interfaces.js';
-// import s from './style.module.css';
+import { StartProps } from './interfaces'
+import { useRouter } from 'next/dist/client/router'
+import { Pokemon } from 'src/components/PokemonCard/interfaces'
 
+const StartPage: React.FC<StartProps> = ({
+  pokemons,
+  selectedPokemons,
+  handleSelectedPokemons,
+}) => {
+  const router = useRouter()
 
+  // const handleChangeSelected = useCallback((pokemon: Pokemon) => {
+  //   handleSelectedPokemons(pokemon)
+  // }, [handleSelectedPokemons])
 
+  const handleStartGameClick = useCallback(() => {
+    router.push('/game/board')
+  }, [router])
 
-const StartPage: React.FC<StartProps> = () => {
-    const firebase = useContext(FireBaseContext); 
-    const pokemonsContext = useContext(PokemonContext)
-    const history = useHistory();
-    const [pokemons, setPokemons] = useState({});
-    // console.log('####: Firebase', firebase)
+  const disabled = useMemo(() => selectedPokemons.length < 5, [
+    selectedPokemons,
+  ])
 
+  const onClickCard = useCallback(
+    (pokemon: Pokemon) => {
+      const selected = selectedPokemons.includes(pokemon)
 
-    useEffect(() => {
-      firebase.getPokemonSocet((pokemons) => {
-        setPokemons(pokemons);
-        });
-        
-        // return () => firebase.offPokemonSocet();
-    }, []);
-    
+      if (disabled || selected) {
+        handleSelectedPokemons(pokemon)
+      }
+    },
+    [disabled, handleSelectedPokemons, selectedPokemons]
+  )
 
+  return useMemo(() => {
+    // if (!pokemonsContext?.selectedPokemons) {
+    //   return null;
+    // }
 
-    const handleChangeSelected = (key) => {
-      const pokemon = {...pokemons[key]};
-      pokemonsContext.onSelectedPokemons(key, pokemon);
+    return (
+      <StartPageStyled>
+        <Layout
+          id={'2'}
+          title="Layout 2 title"
+          // descr='description'
+          colorBg="#777"
+        >
+          <button
+            className={'button'}
+            onClick={handleStartGameClick}
+            disabled={disabled}
+          >
+            Start Game
+          </button>
+          <div className={'flex'}>
+            {pokemons.map((pokemon) => {
+              // const { name, img, id, type, values } = pokemon;
 
+              const selected =
+                selectedPokemons.findIndex((n) => pokemon.id === n.id) !== -1
 
-      setPokemons(prevState => ({
-        ...prevState,
-        [key]: {
-          ...prevState[key],
-          selected: !prevState[key].selected,
-        }
-      }))
+              return (
+                <PokemonCard
+                  // className={'card'}
+                  key={pokemon.id}
+                  // id={id}
+                  // name={name}
+                  // img={img}
+                  // type={type}
+                  // values={values}
+                  pokemon={pokemon}
+                  isActive={true}
+                  isSelected={selected}
+                  onClickCard={onClickCard}
+                />
+              )
+            })}
+          </div>
+        </Layout>
+      </StartPageStyled>
+    )
+  }, [disabled, handleStartGameClick, onClickCard, pokemons, selectedPokemons])
+}
 
-    };
-
-    const handleStartGameClick = () => {
-      history.push('/game/board');
-    }
-
-
-   
-
-  return (
-    <StartPageStyled>
-      <Layout id={2}  
-        title='Layout 2 title' 
-        descr='description' 
-        colorBg='#777' >
-      <button className={"button"} 
-      onClick={handleStartGameClick}
-      disabled={Object.keys(pokemonsContext.pokemons).length < 5}>Start Game</button>
-      <div className={"flex"}>
-          {
-            Object.entries(pokemons).map(([key, {name, img, id, type, values, selected}]) => <PokemonCard 
-            className={"card"}
-            isActive={true}
-            key={key}
-            id={id}
-            name={name}
-            img={img}
-            type={type}
-            values={values}
-            isSelected={selected}
-            onClickCard={() => {
-              if (Object.keys(pokemonsContext.pokemons).length < 5 || selected) { handleChangeSelected(key) }
-          }}
-          />)}
-        </div>
-      </Layout>
-    </StartPageStyled>
-  );
-};
-
-
-export default StartPage;
+export default StartPage
