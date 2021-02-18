@@ -64,12 +64,13 @@ const HomePage: Page = () => {
           <div className={'flex'}>
             {POKEMONS.map((item) => (
               <PokemonCard
+                // id={item.id}
+                // name={item.name}
+                // img={item.img}
+                // type={item.type}
+                // values={item.values}
                 key={item.id}
-                id={item.id}
-                name={item.name}
-                img={item.img}
-                type={item.type}
-                values={item.values}
+                pokemon={item}
               />
             ))}
           </div>

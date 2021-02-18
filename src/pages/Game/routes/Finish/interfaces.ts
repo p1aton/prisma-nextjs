@@ -6,5 +6,4 @@ export type FinishProps = {
   type: string
   values: string
   selected: boolean
-
 }

@@ -17,42 +17,41 @@ if (!firebase.apps.length) {
   firebase.app() // if already initialized, use that one
 }
 
-class Firebase {
-    constructor() {
+// class Firebase {
+//   constructor() {
 
-      this.fire = firebase;
-      this.database = this.fire.database();
-    }
+//     this.fire = firebase;
+//     this.database = this.fire.database();
+//   }
 
-    getPokemonSocet = (cb) => {
-      this.database.ref('pokemons').on('value', (snapshot) => {
-        cb(snapshot.val());
-      })
-    }
+//   getPokemonSocet = (cb) => {
+//     this.database.ref('pokemons').on('value', (snapshot) => {
+//       cb(snapshot.val());
+//     })
+//   }
 
-    offPokemonSocet = () => {
-      this.database.ref('pokemons').off();
-    }
+//   offPokemonSocet = () => {
+//     this.database.ref('pokemons').off();
+//   }
 
-    getPokemonsOnce = async () => {
-      return await this.database.ref('pokemons').once('value').then(snapshot => snapshot.val());
-    }
+//   getPokemonsOnce = async () => {
+//     return await this.database.ref('pokemons').once('value').then(snapshot => snapshot.val());
+//   }
 
-    postPokemon = (key, pokemon) => {
-      this.database.ref(`pokemons/${key}`).set(pokemon);
-    }
+//   postPokemon = (key, pokemon) => {
+//     this.database.ref(`pokemons/${key}`).set(pokemon);
+//   }
 
-    addPokemon = (data, cb) => {
-      const newKey = this.database.ref().child('pokemons').push().key;
-      this.database.ref('pokemons/' + newKey).set(data);
-    }
+//   addPokemon = (data, cb) => {
+//     const newKey = this.database.ref().child('pokemons').push().key;
+//     this.database.ref('pokemons/' + newKey).set(data);
+//   }
 
-    
+// }
 
-  }
-  
+// export default Firebase;
 
+// export const fire = firebase
+export const database = firebase.database()
 
-  export default Firebase;
-
-
+export default database
