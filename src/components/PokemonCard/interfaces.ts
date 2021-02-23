@@ -1,3 +1,10 @@
+
+/**
+ * Ключ записи - id этой записи
+ */
+
+export type PokemonState = Record<Pokemon["id"], Pokemon>
+
 export type Pokemon = {
   type: string
   values: {

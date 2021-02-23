@@ -18,6 +18,8 @@ import MenuHeader from 'src/components/MenuHeader'
 import { useRouter } from 'next/dist/client/router'
 import { AppStyled } from './styles'
 import Footer from 'src/components/Footer'
+// import { FireBaseContext } from 'src/components/context/firebaseContext'
+// import {database} from 'src/service/firebase'
 
 const withWs = true
 
@@ -28,7 +30,10 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
 
   const { statusCode } = pageProps
 
-  const isHomePage = useMemo(() => router.pathname === '/', [router.pathname])
+  // const isHomePage = useMemo(() => router.pathname === '/', [router.pathname])
+  const isPadding = useMemo(() => router.pathname === '/' || router.pathname === '/game/board', [router.pathname])
+
+  // const isPadding = location.pathname === '/'|| location.pathname==='/game/board';
 
   const content = useMemo(() => {
     const meta: NextSeoProps = {}
@@ -55,18 +60,21 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
       /**
        * If OK, show page Component
        */
-      content = <Component {...pageProps} />
+       return <Component {...pageProps} />
+      // content = <FireBaseContext.Provider value={{database}}>
+      // <Component {...pageProps} />
+      // </FireBaseContext.Provider>
     }
 
     return (
       <>
         <NextSeo {...meta} />
-        <MenuHeader bgActive={isHomePage} />
-        <AppStyled isHomePage={isHomePage}>{content}</AppStyled>
+        <MenuHeader bgActive={!isPadding} />
+        <AppStyled isHomePage={isPadding}>{content}</AppStyled>
         <Footer />
       </>
     )
-  }, [statusCode, isHomePage, pageProps])
+  }, [statusCode, isPadding, pageProps])
 
   return (
     <>

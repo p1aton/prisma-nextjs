@@ -1,34 +1,49 @@
-import {useRouteMatch, Route, Switch} from "react-router-dom";
+// import {useRouteMatch, Route, Switch} from "react-router-dom";
 import { useState } from 'react';
-
-
-import StartPage from './routes/Start/index.js';
-import BoardPage from './routes/Board/index.js';
-import FinishPage from './routes/Finish/index.js';
-import { PokemonContext } from "../../context/pokemonContext.js";
+import { PokemonContext } from 'src/components/context/pokemonContext';
+import { Pokemon } from 'src/components/PokemonCard/interfaces';
+// import StartPage from './routes/Start/index';
+// import BoardPage from './routes/Board/index';
+// import FinishPage from './routes/Finish/index';
 
 
 
 
 
 const GamePage = () => {
-  const [selectedPokemons, setSelectedPokemons] = useState({});
-  console.log('####: selectedPokemons', selectedPokemons)
-  const match = useRouteMatch();
+  const [selectedPokemons, setSelectedPokemons] = useState<Pokemon[]>([]);
+  // console.log('####: selectedPokemons', selectedPokemons)
+  // const match = useRouteMatch();
 
-  const handleSelectedPokemons = (key, pokemon) => {
-    setSelectedPokemons(prevState => {
-      if(prevState[key]) {
-        const copyState = {...prevState};
-        delete copyState[key];
+  const handleSelectedPokemons = (pokemon: Pokemon) => {
+    setSelectedPokemons((prevState) => {
+      // if(prevState[key]) {
+      //   const copyState = {...prevState};
+      //   delete copyState[key];
 
-        return copyState;
+      //   return copyState;
+      // }
+
+      // return {
+      //   ...prevState,
+      //   [key]: pokemon,
+      // }
+
+      const pokemons = [...prevState]
+      /**
+       * Если в массиве есть указанный покемон
+       */
+      const index = pokemons.indexOf(pokemon)
+      // То исключаем его
+      if (index != -1){
+        pokemons.splice(index, 1)
+      }
+      else {
+        // Иначе добовляем покемона в массив выделенных
+        pokemons.push(pokemon);
       }
 
-      return {
-        ...prevState,
-        [key]: pokemon,
-      }
+      return pokemons
     })
   }
 
@@ -37,11 +52,11 @@ const GamePage = () => {
       pokemons: selectedPokemons,
       onSelectedPokemons: handleSelectedPokemons
     }}>
-      <Switch>
+      {/* <Switch>
         <Route path={`${match.path}/`} exact component={StartPage} />
         <Route path={`${match.path}/board`} component={BoardPage} />
         <Route path={`${match.path}/finish`} component={FinishPage} />
-      </Switch>
+      </Switch> */}
     </PokemonContext.Provider>
   );
 };
