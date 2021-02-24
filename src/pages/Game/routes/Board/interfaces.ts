@@ -12,7 +12,7 @@ export type BoardProps = {
     bottom: number | string
     left: number | string
   }
-  minimize?: string // не знаю, что сюда ставить
+  // minimize?: boolean; // не знаю, что сюда ставить
 
 }
 

@@ -1,5 +1,6 @@
+import { LayoutStyled } from './../../../../components/Layout/styles';
+import { PokemonCardStyled } from './../../../../components/PokemonCard/styles';
 import styled from 'styled-components'
-import { LayoutStyled } from './../../components/Layout/styles'
 
 export const StartPageStyled = styled.div`
   ${LayoutStyled} {
@@ -28,7 +29,8 @@ export const StartPageStyled = styled.div`
   
 }
 
-.card {
+/* .card  */
+${PokemonCardStyled}{
   width: 100%;
   height: 380px;
   cursor: pointer;

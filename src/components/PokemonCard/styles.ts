@@ -23,11 +23,18 @@ export const PokemonCardStyled = styled.div`
   transform-style: preserve-3d;
   transition: .6s .1s;
   transform: rotateY(180deg);
+
+  &.active {
+  animation: flipFront 1000ms 300ms forwards;
+  }
+
+  &.pokemonCard.selected {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  }
 }
 
-.pokemonCard.active {
-  animation: flipFront 1000ms 300ms forwards;
-}
+
 
 @keyframes flipFront {
   from {
@@ -38,10 +45,7 @@ export const PokemonCardStyled = styled.div`
   }
 }
 
-.pokemonCard.selected {
-  margin-top: -20px;
-  margin-bottom: 20px;
-}
+
 
 .cardFront,
 .cardBack {
@@ -92,7 +96,7 @@ export const PokemonCardStyled = styled.div`
 
 .wrap.back {
   z-index: -1;
-  background-image: url(./assets/card-back-side.jpg);
+  background-image: url("./assets/card-back-side.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

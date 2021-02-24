@@ -65,11 +65,12 @@ const HomePage: Page = () => {
             {POKEMONS.map((item) => (
               <PokemonCard
                 key={item.id}
-                id={item.id}
-                name={item.name}
-                img={item.img}
-                type={item.type}
-                values={item.values}
+                pokemon={item}
+                // id={item.id}
+                // name={item.name}
+                // img={item.img}
+                // type={item.type}
+                // values={item.values}
               />
             ))}
           </div>

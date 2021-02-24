@@ -2,7 +2,10 @@ import { Pokemon } from 'src/components/PokemonCard/interfaces';
 import React from 'react';
 
 type PokemonContextValue = {
-  pokemons: Pokemon[]
+  /**
+   * Выделенные покемоны (активные)
+   */
+  selectedPokemons: Pokemon[]
   onSelectedPokemons: (pokemons: Pokemon) => void 
 }
 

@@ -29,9 +29,19 @@ export type Pokemon = {
 
   base_experience: number
   height: number
-  isActive?: boolean
+  
 }
 
 export type PokemonCardProps = {
-  handleClickCard?: (id: number) => void
-} & Omit<Pokemon, 'abilities' | 'stats' | 'base_experience' | 'height'>
+
+  pokemon: Pokemon
+  
+  onClickCard?: (pokemon: Pokemon) => void
+
+  isSelected?: boolean;
+
+  minimize?: boolean;
+
+  isActive?: boolean
+} 
+// & Omit<Pokemon, 'abilities' | 'stats' | 'base_experience' | 'height'>

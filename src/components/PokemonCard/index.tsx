@@ -2,34 +2,46 @@
 // import s from './style.module.css'
 // import CardBackSide from './assets/card-back-side.jpg'
 // import cn from 'classnames'
+import { useCallback } from 'react'
 import { PokemonCardProps } from './interfaces'
 import { PokemonCardStyled } from './styles'
 
 const PokemonCard: React.FC<PokemonCardProps> = ({
-  type, 
-  values, 
-  id, 
-  img, 
-  name, 
-  onClickCard, 
-  isActive, 
-  minimize, 
-  className, 
-  isSelected
+    pokemon,
+    // id,
+    onClickCard,
+    //   className, 
+    isSelected,
+    minimize,
+    isActive
 }) => {
-    const handleClick = () => {
-        onClickCard && onClickCard(id)
 
-    }
+    const {
+    id,    
+    type,
+    values,
+    img,
+    name,
+    
+    } = pokemon;
 
+    const handleClick = useCallback(() => {
+        onClickCard && onClickCard(pokemon)
 
-    return (
-        <PokemonCardStyled className={cn(className, s.pokemonCard, {
-            [s.active]: isActive,
-            [s.selected]: isSelected, })}
-            onClick={handleClick}
+    }, [onClickCard, pokemon])
+
+    return ( 
+        <PokemonCardStyled onClick={handleClick}>
+
+        <div
+        className={[
+          'pokemonCard',
+          isActive ? 'active' : '',
+          isSelected ? 'selected' : '',
+        ].join(' ')}
+      >
             
-        >
+            
             <div className={'cardFront'}>
                 <div className={`$ {'wrap'}, {'front'}`}>
                     <div className={`${'pokemon'} ${[type]}`}>
@@ -56,9 +68,10 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
             </div>
 
             <div className={'cardBack'}>
-                <div className={`${'wrap'} ${'back'}`}
-                 />
+                <div className={`${'wrap'} ${'back'}`}/>
             </div>
+            </div>
+            
 
         </PokemonCardStyled>
     )
